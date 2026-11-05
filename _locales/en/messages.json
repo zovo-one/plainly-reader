@@ -1,0 +1,838 @@
+{
+  "extName": {
+    "message": "Plainly, Plain English Reader",
+    "description": "Extension name shown in the Chrome Web Store and toolbar."
+  },
+  "extDesc": {
+    "message": "Get plain English from dense terms, medical letters and legal clauses, at a reading level you pick. Runs on your device.",
+    "description": "Store short description. Accessibility framing; simplify-verbs only (positioning discipline)."
+  },
+  "appName": {
+    "message": "Plainly",
+    "description": "Short product name used in headers and the document title."
+  },
+  "appTagline": {
+    "message": "Get plain English on any dense page",
+    "description": "One-line tagline under the product name in the side panel header."
+  },
+  "settingsSub": {
+    "message": "Settings",
+    "description": "Subtitle under the product name on the options page header."
+  },
+  "stateIdleTitle": {
+    "message": "Get hard text into plain English",
+    "description": "Side panel availability block title before the model state is known."
+  },
+  "stateIdleHint": {
+    "message": "Highlight a confusing sentence on the page, then click Simplify below. Everything runs on your device.",
+    "description": "Side panel availability block hint before the model state is known."
+  },
+  "stateReadyTitle": {
+    "message": "Ready. Highlight text, get plain English",
+    "description": "Availability block title when the on-device model is available."
+  },
+  "stateReadyHint": {
+    "message": "Highlight a confusing sentence, then click Simplify. Everything runs on your device.",
+    "description": "Availability block hint when the on-device model is available."
+  },
+  "stateDownloadableTitle": {
+    "message": "Get the on-device model once",
+    "description": "Availability block title when the model can be downloaded."
+  },
+  "stateDownloadableHint": {
+    "message": "Get the on-device model below to start turning hard text into plain English.",
+    "description": "Availability block hint when the model can be downloaded."
+  },
+  "stateDownloadingTitle": {
+    "message": "Downloading now, then you get plain English",
+    "description": "Availability block title while the model downloads."
+  },
+  "stateDownloadingHint": {
+    "message": "This runs once. You can keep this panel open.",
+    "description": "Availability block hint while the model downloads."
+  },
+  "stateUnavailableTitle": {
+    "message": "This device can't get on-device AI",
+    "description": "Availability block title when the on-device model cannot run here."
+  },
+  "stateUnavailableHint": {
+    "message": "Plainly needs desktop Chrome 138+ with on-device AI (about 22 GB free disk, 16 GB RAM).",
+    "description": "Availability block hint with honest hardware requirements."
+  },
+  "quotaLabel": {
+    "message": "simplifications left today",
+    "description": "Label under the big daily-remaining number (Free tier)."
+  },
+  "quotaLabelPro": {
+    "message": "unlimited simplifications on Pro",
+    "description": "Label under the infinity symbol for Pro users."
+  },
+  "levelsLabel": {
+    "message": "Reading level",
+    "description": "Label above the reading-level selector."
+  },
+  "levelEli5": {
+    "message": "ELI5",
+    "description": "Name of the easiest reading level (explain like I'm 5)."
+  },
+  "levelEli5Grade": {
+    "message": "~Grade 3",
+    "description": "Grade anchor shown under the ELI5 level name."
+  },
+  "levelSimple": {
+    "message": "Simple",
+    "description": "Name of the middle reading level."
+  },
+  "levelSimpleGrade": {
+    "message": "~Grade 5",
+    "description": "Grade anchor shown under the Simple level name."
+  },
+  "levelPlain": {
+    "message": "Plain",
+    "description": "Name of the plain-language reading level."
+  },
+  "levelPlainGrade": {
+    "message": "~Grade 8",
+    "description": "Grade anchor shown under the Plain level name."
+  },
+  "ctaSimplify": {
+    "message": "Simplify selection",
+    "description": "Primary button that simplifies the current page selection."
+  },
+  "ctaWholeArticle": {
+    "message": "Simplify whole article",
+    "description": "Pro button that simplifies the whole article at once."
+  },
+  "ctaCopy": {
+    "message": "Copy result",
+    "description": "Button that copies the plain-English output."
+  },
+  "copied": {
+    "message": "Copied",
+    "description": "Short confirmation shown on the copy button after a successful copy."
+  },
+  "copyFailed": {
+    "message": "Copy failed, select manually",
+    "description": "Short message shown on the copy button when the clipboard write fails; names the way out."
+  },
+  "downloadTitle": {
+    "message": "Get the on-device model",
+    "description": "Title of the one-time model download card."
+  },
+  "downloadHint": {
+    "message": "One-time 2 to 4 GB download. It runs fully on your computer, and nothing you read is ever sent anywhere.",
+    "description": "Explanation on the model download card."
+  },
+  "ctaStartDownload": {
+    "message": "Download the model",
+    "description": "Button that starts the one-time model download."
+  },
+  "errDownload": {
+    "message": "Download didn't finish. Check your connection and try again.",
+    "description": "Notice when the model download fails or stalls."
+  },
+  "progressLabel": {
+    "message": "Simplifying",
+    "description": "Label above the multi-section progress bar."
+  },
+  "progressCount": {
+    "message": "Section {0} of {1}",
+    "description": "Progress counter for long inputs; {0} is the current section, {1} the total."
+  },
+  "resultTitle": {
+    "message": "Plain English",
+    "description": "Header of the output card that shows the simplified text."
+  },
+  "resultEmptyTitle": {
+    "message": "Get your first plain-English result",
+    "description": "Bold line in the empty output card."
+  },
+  "resultEmptyBody": {
+    "message": "Highlight a dense sentence and press Simplify. You get it back in plain English in a second or two, right here.",
+    "description": "Helper text in the empty output card."
+  },
+  "readoutWords": {
+    "message": "words",
+    "description": "Unit label after the word count in the reading-stats readout."
+  },
+  "readoutAvg": {
+    "message": "avg words / sentence",
+    "description": "Unit label after the average sentence length in the reading-stats readout."
+  },
+  "noticeTruncated": {
+    "message": "Simplified the first {0} sections. Select a smaller passage for the rest.",
+    "description": "Notice when input exceeded the section cap; {0} is the number of sections simplified."
+  },
+  "noticeFreeSection": {
+    "message": "Simplified the first section. Pro simplifies the whole article at once.",
+    "description": "Notice when a Free user's long selection was simplified one section only."
+  },
+  "noticeSkipped": {
+    "message": "One section was too dense to simplify. Try selecting less.",
+    "description": "Notice when a section could not fit the model's input budget."
+  },
+  "extractionEmpty": {
+    "message": "Select the text you want in plain English, then click Simplify.",
+    "description": "Notice when no selection or article text could be read from the page."
+  },
+  "errNoTab": {
+    "message": "Couldn't read the page. Click Plainly again to grant access.",
+    "description": "Notice when reading the active tab fails (for example, permission revoked)."
+  },
+  "errModelRun": {
+    "message": "Stopped at section {0} of {1}. Copy what's here or try again.",
+    "description": "Notice when the model stops mid-run; partial output stays on screen."
+  },
+  "errSessionCreate": {
+    "message": "Couldn't start the on-device model. Try again.",
+    "description": "Notice when the model session could not be created."
+  },
+  "errGeneric": {
+    "message": "Something went wrong. Try again.",
+    "description": "Fallback notice for an unexpected failure."
+  },
+  "capTitle": {
+    "message": "You hit the free 5. Keep simplifying",
+    "description": "Cap-hit banner title at the Free daily limit; names the limit met and the way forward."
+  },
+  "capText": {
+    "message": "Pro removes the daily cap and simplifies whole articles at once. Free resets at midnight. Every plan has a 14-day money-back guarantee.",
+    "description": "Cap-hit banner body: what Pro changes right now, the honest reset, and the real risk reversal at the peak-intent moment."
+  },
+  "ctaUpgrade": {
+    "message": "Get Pro — $$99 lifetime",
+    "description": "Cap-hit banner CTA with the honest one-time price (MONETIZE-STANDARD §4 price line at the peak-intent moment). $$ escapes to $. Canonical zovo.one pricing URL, utm_content=cap-hit."
+  },
+  "peekText": {
+    "message": "Want it even simpler?",
+    "description": "Post-success nudge shown after a Free Simple-level result."
+  },
+  "peekCta": {
+    "message": "Unlock ELI5 · $$99 once",
+    "description": "Post-success nudge link toward the locked ELI5 level with the honest one-time price ($$ escapes to $). Opens canonical pricing URL, utm_content=post-success."
+  },
+  "historyTitle": {
+    "message": "Recent",
+    "description": "Title of the history list in the side panel."
+  },
+  "historyEmpty": {
+    "message": "Nothing here yet. Simplify a dense sentence and it lands here.",
+    "description": "Empty-state text for the history list; nudges the first action."
+  },
+  "ctaClear": {
+    "message": "Clear",
+    "description": "Button that clears the local history."
+  },
+  "cleared": {
+    "message": "Cleared",
+    "description": "Short confirmation shown on the clear button after history is wiped."
+  },
+  "shieldText": {
+    "message": "Nothing you read ever leaves your device.",
+    "description": "Privacy callout in the side panel footer."
+  },
+  "ctaSettings": {
+    "message": "Settings",
+    "description": "Footer link to the options page."
+  },
+  "footerDisclaimer": {
+    "message": "Not affiliated with Google or Chrome. Chrome is a trademark of Google LLC.",
+    "description": "Legal footer line (nominative use, no ® symbol)."
+  },
+  "linkPrivacy": {
+    "message": "Privacy",
+    "description": "Footer link to the privacy policy."
+  },
+  "linkSupport": {
+    "message": "Support",
+    "description": "Footer mailto link to support."
+  },
+  "planTitle": {
+    "message": "Your plan",
+    "description": "Options page plan card title."
+  },
+  "planSub": {
+    "message": "Free gives you the Simple reading level, 5 simplifications a day.",
+    "description": "Options page plan card subtitle describing the Free tier."
+  },
+  "tierFree": {
+    "message": "Free",
+    "description": "Plan badge for the Free tier."
+  },
+  "tierPro": {
+    "message": "Pro",
+    "description": "Plan badge for the Pro tier."
+  },
+  "perkLevels": {
+    "message": "Every reading level, ELI5 and Plain included",
+    "description": "Pro perk: full reading-level selector."
+  },
+  "perkUnlimited": {
+    "message": "No daily cap, simplify as much as you read",
+    "description": "Pro perk: no daily cap."
+  },
+  "perkWhole": {
+    "message": "Simplify a whole article at once",
+    "description": "Pro perk: whole-article scope."
+  },
+  "ctaUnlockPro": {
+    "message": "Get Pro — $$99 lifetime",
+    "description": "Upgrade call-to-action on the options plan card and the inline upgrade card: canonical \"Get Pro — $99 lifetime\" price CTA ($$ escapes to a single $ at runtime). Canonical zovo.one pricing URL."
+  },
+  "activateLabel": {
+    "message": "Already have a license key?",
+    "description": "Label above the license-key input on the options page."
+  },
+  "activatePlaceholder": {
+    "message": "ZOVO-XXXX-XXXX-XXXX-XXXX",
+    "description": "Placeholder inside the license-key input."
+  },
+  "ctaActivate": {
+    "message": "Activate",
+    "description": "Button that verifies the entered license key."
+  },
+  "licenseEmpty": {
+    "message": "Enter a key first.",
+    "description": "Status when Activate is clicked with an empty input."
+  },
+  "licenseVerifying": {
+    "message": "Verifying…",
+    "description": "Status while the license key is being verified."
+  },
+  "licenseSuccess": {
+    "message": "Pro active. Thank you!",
+    "description": "Status after a successful license activation."
+  },
+  "licenseInvalid": {
+    "message": "That key did not check out. Check the spelling and try again.",
+    "description": "Status after a failed license activation; plain cause plus the next step, no blame."
+  },
+  "licenseError": {
+    "message": "Could not reach the service worker. Reload this page and try again.",
+    "description": "Status when the activation message fails to reach the background worker; names the recovery."
+  },
+  "proActive": {
+    "message": "Pro is active on this device. Thank you.",
+    "description": "Confirmation line shown on the plan card for Pro users."
+  },
+  "planHeadline": {
+    "message": "Keep reading in plain English, no daily wall",
+    "description": "Benefit-led headline on the options plan card."
+  },
+  "perkHistory": {
+    "message": "Your last 10 results kept, not 3",
+    "description": "Pro perk: larger saved-history cap, with the Free gap named."
+  },
+  "planAnchor": {
+    "message": "$$99 once, lifetime — or $$4.99/month, cancel anytime. You break even in about 20 months; free features stay free.",
+    "description": "Price anchor line on upgrade surfaces (MONETIZE-STANDARD §4 rule 5): the real one-time price, the real monthly decoy, and the true break-even. $$ escapes to $."
+  },
+  "planGuarantee": {
+    "message": "14-day money-back guarantee · cancel anytime · zero data collection",
+    "description": "The real risk-reversal line; renders wherever a plan is mentioned. There is no trial."
+  },
+  "cmpFeature": {
+    "message": "What you get",
+    "description": "Free-vs-Pro table: feature column header."
+  },
+  "cmpRowLevels": {
+    "message": "Reading levels",
+    "description": "Free-vs-Pro table: reading-levels row label."
+  },
+  "cmpFreeLevels": {
+    "message": "Simple only",
+    "description": "Free-vs-Pro table: Free reading levels."
+  },
+  "cmpProLevels": {
+    "message": "All three",
+    "description": "Free-vs-Pro table: Pro reading levels."
+  },
+  "cmpRowDaily": {
+    "message": "Simplifications a day",
+    "description": "Free-vs-Pro table: daily-limit row label."
+  },
+  "cmpFreeDaily": {
+    "message": "5",
+    "description": "Free-vs-Pro table: Free daily limit."
+  },
+  "cmpProDaily": {
+    "message": "Unlimited",
+    "description": "Free-vs-Pro table: Pro daily limit."
+  },
+  "cmpRowScope": {
+    "message": "Article scope",
+    "description": "Free-vs-Pro table: scope row label."
+  },
+  "cmpFreeScope": {
+    "message": "One section",
+    "description": "Free-vs-Pro table: Free scope."
+  },
+  "cmpProScope": {
+    "message": "Whole article",
+    "description": "Free-vs-Pro table: Pro scope."
+  },
+  "cmpRowHistory": {
+    "message": "Results kept",
+    "description": "Free-vs-Pro table: history row label."
+  },
+  "cmpFreeHistory": {
+    "message": "Last 3",
+    "description": "Free-vs-Pro table: Free history cap."
+  },
+  "cmpProHistory": {
+    "message": "Last 10",
+    "description": "Free-vs-Pro table: Pro history cap."
+  },
+  "zsProTitle": {
+    "message": "Unlock Pro. Every level, no daily cap.",
+    "description": "Conversion sidebar Get-Pro card title; one benefit clause, no price."
+  },
+  "zsBenefit1": {
+    "message": "Every level, ELI5 and Plain included",
+    "description": "Conversion sidebar Pro benefit 1."
+  },
+  "zsBenefit2": {
+    "message": "No daily cap on your reads",
+    "description": "Conversion sidebar Pro benefit 2."
+  },
+  "zsBenefit3": {
+    "message": "Whole articles, plus 10 results kept",
+    "description": "Conversion sidebar Pro benefit 3."
+  },
+  "zsCta": {
+    "message": "Get Pro — $$99 lifetime",
+    "description": "Conversion sidebar Get-Pro CTA — the canonical zovo-sidebar label with price (MONETIZE-STANDARD §5). $$ escapes to $. Canonical zovo.one pricing URL (utm_content=sidebar)."
+  },
+  "zsSub": {
+    "message": "One payment, not a subscription · 14-day money-back guarantee · Free stays free.",
+    "description": "Conversion sidebar sub-line under the Get-Pro CTA: one-payment reframe, real risk reversal, honest free framing."
+  },
+  "zsMoreLabel": {
+    "message": "More tools",
+    "description": "Conversion sidebar: more-tools eyebrow."
+  },
+  "zsMoreLink": {
+    "message": "Browse all tools at zovo.one",
+    "description": "Conversion sidebar: neutral zovo.one funnel link (no sibling names)."
+  },
+  "linkHelp": {
+    "message": "Help",
+    "description": "Conversion sidebar footer: help link."
+  },
+  "defaultLevelLabel": {
+    "message": "Save a default reading level",
+    "description": "Options page label for the default reading-level selector."
+  },
+  "defaultLevelHint": {
+    "message": "The level used when you press Simplify. ELI5 and Plain need Pro.",
+    "description": "Hint under the default-level selector."
+  },
+  "themeLabel": {
+    "message": "Appearance",
+    "description": "Options page label for the theme selector."
+  },
+  "themeSystem": {
+    "message": "System",
+    "description": "Theme option: follow the operating system."
+  },
+  "themeLight": {
+    "message": "Light",
+    "description": "Theme option: light mode."
+  },
+  "themeDark": {
+    "message": "Dark",
+    "description": "Theme option: dark mode."
+  },
+  "prefsLabel": {
+    "message": "Preferences",
+    "description": "Options page label for the preferences card."
+  },
+  "prefHistoryTitle": {
+    "message": "Keep recent reads in view",
+    "description": "Preference: toggle for the history list."
+  },
+  "prefHistoryDesc": {
+    "message": "List your recent simplifications in the side panel. Stored on this device only.",
+    "description": "Description of the history-visibility preference."
+  },
+  "prefClearTitle": {
+    "message": "Clear history",
+    "description": "Preference: clear-history action title."
+  },
+  "prefClearDesc": {
+    "message": "Remove every saved simplification from this device. Can't be undone.",
+    "description": "Description of the clear-history action."
+  },
+  "prefReplayTitle": {
+    "message": "Replay welcome",
+    "description": "Preference: replay-onboarding action title."
+  },
+  "prefReplayDesc": {
+    "message": "See the 10-second intro and live demo again.",
+    "description": "Description of the replay-onboarding action."
+  },
+  "ctaReplay": {
+    "message": "Replay",
+    "description": "Button that reopens the onboarding page."
+  },
+  "obDocTitle": {
+    "message": "Get plain English with Plainly",
+    "description": "Onboarding page document title."
+  },
+  "obSkip": {
+    "message": "Skip intro",
+    "description": "Button that closes the onboarding intro immediately."
+  },
+  "obBack": {
+    "message": "Back",
+    "description": "Wizard navigation: previous step."
+  },
+  "obNext": {
+    "message": "Next step",
+    "description": "Wizard navigation: next step."
+  },
+  "obMaybeLater": {
+    "message": "Maybe later",
+    "description": "Wizard navigation on the Pro offer step: decline and continue."
+  },
+  "obStepOf": {
+    "message": "{0} of {1}",
+    "description": "Wizard step counter; {0} is the current step, {1} the total."
+  },
+  "obStartCta": {
+    "message": "Start reading",
+    "description": "Final onboarding button that closes the tab."
+  },
+  "obS1Eyebrow": {
+    "message": "Stop rereading dense text",
+    "description": "Onboarding step 1 (problem) eyebrow."
+  },
+  "obS1Title": {
+    "message": "Skip the law degree to read a dense lease",
+    "description": "Onboarding step 1 headline."
+  },
+  "obS1Lede": {
+    "message": "Terms of service, medical letters, rental contracts, research abstracts. The words that matter sit under a pile of jargon, and you read the same paragraph five times to be sure. Plainly turns it into plain English at a reading level you choose.",
+    "description": "Onboarding step 1 subheadline."
+  },
+  "obS1Pt": {
+    "message": "Made for the moments dense text becomes a real barrier. Dyslexia, ADHD, reading in a second language, or a tired brain at the end of a long day.",
+    "description": "Onboarding step 1 audience paragraph."
+  },
+  "obS1Cap": {
+    "message": "A page you actually got sent",
+    "description": "Caption above the dense-document mock on step 1."
+  },
+  "obS2Eyebrow": {
+    "message": "One click",
+    "description": "Onboarding step 2 (instant win) eyebrow."
+  },
+  "obS2Title": {
+    "message": "Get the hard paragraph plain in about a second",
+    "description": "Onboarding step 2 headline."
+  },
+  "obS2Lede": {
+    "message": "Highlight a confusing sentence, click the Plainly icon, and the side panel gives it back at your level. Facts, names, numbers, and dates stay exactly as written. Nothing gets added and nothing gets invented.",
+    "description": "Onboarding step 2 subheadline."
+  },
+  "obS2DemoCta": {
+    "message": "Watch it simplify",
+    "description": "Button that replays the live onboarding demo."
+  },
+  "obBeforeTag": {
+    "message": "The original",
+    "description": "Tag above the demo dense source text."
+  },
+  "obBeforeText": {
+    "message": "Pursuant to the foregoing, the Licensee agrees to indemnify and hold the Licensor harmless from any and all liabilities, claims, and expenses arising in connection with the Licensee use of the Services.",
+    "description": "Mock legal clause used as the demo input."
+  },
+  "obAfterTag": {
+    "message": "In plain English",
+    "description": "Tag above the demo plain-English output."
+  },
+  "obAfterText": {
+    "message": "If someone sues over how you used the service, you have to cover the company costs, not them.",
+    "description": "Pre-rendered plain-English version of the demo clause (honest fallback when the model cannot run)."
+  },
+  "obS2Tag1": {
+    "message": "On your device",
+    "description": "Demo pill: runs on-device."
+  },
+  "obS2Tag2": {
+    "message": "Simple, grade 5",
+    "description": "Demo pill: reading level used."
+  },
+  "obS2Tag3": {
+    "message": "No cloud",
+    "description": "Demo pill: no cloud processing."
+  },
+  "obS3Eyebrow": {
+    "message": "Set it once",
+    "description": "Onboarding step 3 (investment) eyebrow."
+  },
+  "obS3Title": {
+    "message": "Save the reading level that fits how you read",
+    "description": "Onboarding step 3 headline."
+  },
+  "obS3Lede": {
+    "message": "Simple lands around a grade five reading level with common words. Want it gentler or a touch higher? ELI5 goes to about grade three and Plain sits near grade eight. Choose your default here and every read starts there.",
+    "description": "Onboarding step 3 subheadline."
+  },
+  "obS3Pt": {
+    "message": "It runs on Chrome built-in AI, right on your computer. The text you read never goes to a server, so you can simplify a private letter with the wifi off.",
+    "description": "Onboarding step 3 privacy paragraph."
+  },
+  "obGrade3": {
+    "message": "about grade 3",
+    "description": "Grade anchor under the ELI5 level on the onboarding picker."
+  },
+  "obGrade5": {
+    "message": "about grade 5",
+    "description": "Grade anchor under the Simple level on the onboarding picker."
+  },
+  "obGrade8": {
+    "message": "about grade 8",
+    "description": "Grade anchor under the Plain level on the onboarding picker."
+  },
+  "obSaveLevel": {
+    "message": "Save my reading level",
+    "description": "Button that saves the chosen default reading level."
+  },
+  "obSavedNote": {
+    "message": "Saved. New reads start at this level.",
+    "description": "Confirmation line after the default level is saved."
+  },
+  "obLevelSaved": {
+    "message": "Reading level saved",
+    "description": "Confirmation on the onboarding save button after the default level is stored."
+  },
+  "obS4Eyebrow": {
+    "message": "Keep a private letter private",
+    "description": "Onboarding step 4 (trust) eyebrow."
+  },
+  "obS4Title": {
+    "message": "Keep your reading on your device by design",
+    "description": "Onboarding step 4 headline."
+  },
+  "obS4Lede": {
+    "message": "Your reading stays on your machine. The read path makes no server call at all, no account, no sync, nothing sent anywhere.",
+    "description": "Onboarding step 4 subheadline; only verifiable claims."
+  },
+  "obS4Stat1": {
+    "message": "modern, sandboxed, no remote code",
+    "description": "Trust stat caption under MV3."
+  },
+  "obS4Stat2": {
+    "message": "network calls on the read path",
+    "description": "Trust stat caption under the zero."
+  },
+  "obS4Stat3": {
+    "message": "developer, building in the open",
+    "description": "Trust stat caption under the 1; one person, accountable."
+  },
+  "obS4Pt": {
+    "message": "A plain-English reader is where you meet the studio. The larger goal is an honest layer for the whole extension world, one tool at a time, with no tracking and no spam.",
+    "description": "Onboarding step 4 founder paragraph."
+  },
+  "obLinkWhy": {
+    "message": "Why I build these tools",
+    "description": "Founder link: why page."
+  },
+  "obLinkVision": {
+    "message": "The vision",
+    "description": "Founder link: vision page."
+  },
+  "obLinkSafety": {
+    "message": "How we keep you safe",
+    "description": "Founder link: safety page."
+  },
+  "obTrust1Title": {
+    "message": "Keep everything on your device",
+    "description": "Trust card 1 title."
+  },
+  "obTrust1Text": {
+    "message": "Your selections and results live in local browser storage. No account, no sync server, nothing sent anywhere.",
+    "description": "Trust card 1 body."
+  },
+  "obTrust2Title": {
+    "message": "Get one developer who answers you",
+    "description": "Trust card 2 title."
+  },
+  "obTrust2Text": {
+    "message": "Not a faceless company. A developer who ships in public, uses these tools daily, and answers you directly at",
+    "description": "Trust card 2 body, leading into the GitHub link."
+  },
+  "obS5Eyebrow": {
+    "message": "Keep Free, unlock the rest",
+    "description": "Onboarding step 5 (offer) eyebrow."
+  },
+  "obS5Title": {
+    "message": "Free stays genuinely useful. Pro removes the limits.",
+    "description": "Onboarding step 5 headline."
+  },
+  "obS5Lede": {
+    "message": "The Simple level on your own selection stays free every day. Going Pro adds the full level selector, whole-article reads, and no daily cap.",
+    "description": "Onboarding step 5 subheadline."
+  },
+  "obFreeDesc": {
+    "message": "For the occasional hard page",
+    "description": "Free plan tagline."
+  },
+  "obFreePerk1": {
+    "message": "The Simple reading level",
+    "description": "Free plan perk 1."
+  },
+  "obFreePerk2": {
+    "message": "Five reads a day, resets at midnight",
+    "description": "Free plan perk 2."
+  },
+  "obFreePerk3": {
+    "message": "Your last three results kept",
+    "description": "Free plan perk 3."
+  },
+  "obFreePerk4": {
+    "message": "Runs fully on your device",
+    "description": "Free plan perk 4."
+  },
+  "obRibbon": {
+    "message": "Most complete",
+    "description": "Ribbon on the Pro plan card."
+  },
+  "obProDesc": {
+    "message": "For anyone who reads dense text daily",
+    "description": "Pro plan tagline."
+  },
+  "obProPerk1": {
+    "message": "Every reading level, ELI5 and Plain included",
+    "description": "Pro plan perk 1."
+  },
+  "obProPerk2": {
+    "message": "Simplify a whole article, not one section",
+    "description": "Pro plan perk 2."
+  },
+  "obProPerk3": {
+    "message": "No daily cap on reads",
+    "description": "Pro plan perk 3."
+  },
+  "obProPerk4": {
+    "message": "Full history and a saved default level",
+    "description": "Pro plan perk 4."
+  },
+  "obProPerk5": {
+    "message": "Priority support and every future update",
+    "description": "Pro plan perk 5."
+  },
+  "obPriceNote": {
+    "message": "once, not a subscription. Plainly Pro, yours forever",
+    "description": "One-payment reframe next to the lifetime price (full-pitch surface only)."
+  },
+  "obDual": {
+    "message": "Two ways in. $$4.99/month, cancel anytime. Or $$99 once, never pay again · it pays for itself in about 20 months.",
+    "description": "Onboarding dual-price line: both real prices with the true ~20-month break-even ($ escaped as $$ per Chrome i18n). Full-pitch surface only."
+  },
+  "obGetPro": {
+    "message": "Get my Pro · $$99 once",
+    "description": "Pro plan checkout call-to-action; first-person money button on the full-pitch surface ($ escaped as $$ per Chrome i18n)."
+  },
+  "obGuar": {
+    "message": "The Simple level stays free every day, and Plainly Pro is backed by a 14-day money-back guarantee. Checkout lives on the main site, so the price you see is always current.",
+    "description": "Honest risk-reversal line under the Pro plan card."
+  },
+  "obS6Eyebrow": {
+    "message": "You are set",
+    "description": "Onboarding step 6 (close) eyebrow."
+  },
+  "obS6Title": {
+    "message": "Get any dense page readable in three moves",
+    "description": "Onboarding step 6 headline."
+  },
+  "obS6Lede": {
+    "message": "Pin Plainly, highlight the hard part on any page, and click the icon. The side panel does the rest. Here is the short version worth remembering.",
+    "description": "Onboarding step 6 subheadline."
+  },
+  "obSignTitle": {
+    "message": "Get a note from the developer",
+    "description": "Sign-off card eyebrow."
+  },
+  "obSignText": {
+    "message": "I build every extension on my own, in the open. If something reads wrong or breaks, write to me and I answer. Extensions are only the start. The plan is an honest layer for the whole browser, and going Pro helps ship the next piece of it.",
+    "description": "Sign-off card body."
+  },
+  "obLinkGithub": {
+    "message": "Reach me on GitHub",
+    "description": "Sign-off link: GitHub profile."
+  },
+  "obLinkNext": {
+    "message": "Where this is going",
+    "description": "Sign-off link: vision page."
+  },
+  "obCheat1": {
+    "message": "Highlight the hard part",
+    "description": "Cheat-sheet row 1."
+  },
+  "obCheat2": {
+    "message": "Click the Plainly icon",
+    "description": "Cheat-sheet row 2."
+  },
+  "obCheat3": {
+    "message": "Pick a level, then Simplify",
+    "description": "Cheat-sheet row 3."
+  },
+  "obCheat4": {
+    "message": "Read it, then copy",
+    "description": "Cheat-sheet row 4."
+  },
+  "obS6More": {
+    "message": "Want more from the studio? The same Pro plan supports the rest of the toolkit as it ships.",
+    "description": "Closing cross-link line."
+  },
+  "obLinkSeeMore": {
+    "message": "See what is coming",
+    "description": "Closing link to the Zovo studio page."
+  },
+  "ctaGetPro": {
+    "message": "Get Pro",
+    "description": "Persistent header upgrade pill (options + side panel, MONETIZE-STANDARD §7 surface 2). Compact label; the price line rides on the card it anchors to. Links to canonical zovo.one pricing."
+  },
+  "ctaMaybeLater": {
+    "message": "Maybe later",
+    "description": "Dismiss control on the inline locked-feature upgrade card. The easy no is always one click away."
+  },
+  "upcardTitle": {
+    "message": "Unlock the full reading-level range",
+    "description": "Headline benefit on the inline locked-feature upgrade card (side panel)."
+  },
+  "upcardPerk1": {
+    "message": "Every level, ELI5 and Plain included",
+    "description": "Pro value-stack bullet 1 on the inline upgrade card."
+  },
+  "upcardPerk2": {
+    "message": "No daily cap, plus whole articles at once",
+    "description": "Pro value-stack bullet 2 on the inline upgrade card."
+  },
+  "upcardPerk3": {
+    "message": "Your last 10 results kept, not 3",
+    "description": "Pro value-stack bullet 3 on the inline upgrade card."
+  },
+  "upcardTitleWhole": {
+    "message": "Simplify the whole article in one run",
+    "description": "Headline benefit on the inline upgrade card when it fires at the whole-article scope gate — leads with the pain the user just felt."
+  },
+  "upcardWholePerk1": {
+    "message": "Whole articles at once, not one section",
+    "description": "Pro value-stack bullet 1 when the card fires at the whole-article scope gate."
+  },
+  "upcardWholePerk2": {
+    "message": "Every level, ELI5 and Plain included",
+    "description": "Pro value-stack bullet 2 when the card fires at the whole-article scope gate."
+  },
+  "upcardWholePerk3": {
+    "message": "No daily cap, and your last 10 results kept",
+    "description": "Pro value-stack bullet 3 when the card fires at the whole-article scope gate."
+  },
+  "historyProNudge": {
+    "message": "Pro keeps your last 10 results, not 3",
+    "description": "History-cap nudge shown only when the Free 3-entry history is full; names the exact gap."
+  }
+}

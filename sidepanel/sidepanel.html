@@ -1,0 +1,334 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!--
+      Title is LITERAL "Plainly" (never a locale-message token) to dodge the
+      Chrome 150 title-substitution bug (fleet-wide, 2026-07-15). sidepanel.ts
+      may re-set document.title from chrome.i18n at runtime; this literal is the
+      always-correct fallback so nothing renders a raw token.
+
+      Script is a classic <script src> (NOT type="module") — MV3 CSP forbids
+      inline module scripts. esbuild emits an IIFE at dist/sidepanel/sidepanel.js.
+
+      The side panel is the MAIN UI surface and the sole owner of the on-device
+      LanguageModel session (never the service worker). Every string ships as
+      literal English + data-i18n so the panel is fully readable before JS runs.
+    -->
+    <title>Plainly</title>
+    <link rel="stylesheet" href="sidepanel.css" />
+  </head>
+  <body class="pl pl-root pl-sp">
+    <!-- ============================ Header ============================ -->
+    <header class="pl-header pl-sp__header">
+      <span class="pl-header__icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+             stroke-linecap="round" stroke-linejoin="round" focusable="false">
+          <path d="M3 5a2 2 0 0 1 2-2h6v16H5a2 2 0 0 0-2 2z" />
+          <path d="M21 5a2 2 0 0 0-2-2h-6v16h6a2 2 0 0 1 2 2z" />
+          <path d="M16 8.5 17.4 10l2.6-3" />
+        </svg>
+      </span>
+      <div class="pl-header__titles">
+        <h1 class="pl-header__title" data-i18n="appName">Plainly</h1>
+        <span class="pl-header__sub" data-i18n="appTagline">Get plain English on any dense page</span>
+      </div>
+      <!--
+        Persistent calm gold Get-Pro pill (MONETIZE-STANDARD §7 surface 1 — the
+        popup-CTA equivalent for this side-panel extension). Free only; TS hides
+        it the moment the device goes Pro. Restraint: ONE gold action visible.
+      -->
+      <a class="pl-prolink" id="pl-sp-prolink"
+         href="https://zovo.one/pricing?utm_source=plainly&utm_medium=extension&utm_campaign=upgrade&utm_content=sidepanel"
+         target="_blank" rel="noopener noreferrer" data-i18n="ctaGetPro">Get Pro</a>
+      <span class="pl-header__mark" aria-hidden="true">zovo<b>.one</b></span>
+    </header>
+
+    <!-- ============================ Body ============================= -->
+    <main class="pl-sp__body">
+      <!--
+        Availability state. data-state drives the accent + copy:
+          idle | ready | downloadable | downloading | unavailable | error
+        "unavailable" is HONESTLY distinct from "error" (gray, not red) — the
+        model isn't broken, it just isn't present on this device.
+      -->
+      <section class="pl-state" id="pl-sp-state" data-state="idle"
+               aria-live="polite" aria-labelledby="pl-sp-state-title">
+        <span class="pl-state__icon" id="pl-sp-state-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+               stroke-linecap="round" stroke-linejoin="round" focusable="false">
+            <circle cx="12" cy="12" r="10" />
+            <line x1="12" y1="16" x2="12" y2="12" />
+            <line x1="12" y1="8" x2="12.01" y2="8" />
+          </svg>
+        </span>
+        <div class="pl-state__body">
+          <div class="pl-state__title" id="pl-sp-state-title" data-i18n="stateIdleTitle">
+            Get hard text into plain English
+          </div>
+          <div class="pl-state__hint" id="pl-sp-state-hint" data-i18n="stateIdleHint">
+            Highlight a confusing sentence on the page, then click Simplify below.
+            Everything runs on your device.
+          </div>
+        </div>
+      </section>
+
+      <!--
+        HERO — the ONE number the eye lands on: simplifications left today (Free wall = 5).
+        sidepanel.ts swaps to "Unlimited" for Pro and fills the usage bar.
+      -->
+      <section class="pl-hero pl-sp-quota" aria-labelledby="pl-sp-quota-label">
+        <div class="pl-hero__num" id="pl-sp-quota-num" aria-describedby="pl-sp-quota-label">5</div>
+        <div class="pl-hero__label" id="pl-sp-quota-label" data-i18n="quotaLabel">simplifications left today</div>
+        <div class="pl-progress pl-sp-quota__bar" aria-hidden="true">
+          <div class="pl-progress__fill" id="pl-sp-quota-fill" style="width:0%"></div>
+        </div>
+      </section>
+
+      <!--
+        THE WEDGE — reading-level selector. Simple is Free; ELI5 + Plain are
+        gold-locked Pro (visible so Free users see exactly what Pro adds).
+        aria-disabled (not disabled) so a click still opens the upgrade peek.
+      -->
+      <section class="pl-card pl-sp-levels" aria-labelledby="pl-sp-levels-label">
+        <h2 class="pl-eyebrow" id="pl-sp-levels-label" data-i18n="levelsLabel">Reading level</h2>
+        <div class="pl-seg" role="radiogroup" aria-labelledby="pl-sp-levels-label">
+          <button type="button" class="pl-seg__item pl-seg__item--locked" role="radio"
+                  aria-checked="false" aria-disabled="true"
+                  data-level="eli5" data-pro="true"
+                  aria-label="ELI5, about grade 3, Pro">
+            <span class="pl-seg__name"><span data-i18n="levelEli5">ELI5</span>
+              <svg class="pl-lock" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                   stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"
+                   aria-hidden="true" focusable="false">
+                <rect x="5" y="11" width="14" height="10" rx="2" /><path d="M8 11V7a4 4 0 0 1 8 0v4" />
+              </svg>
+            </span>
+            <span class="pl-seg__grade" data-i18n="levelEli5Grade">~Grade 3</span>
+          </button>
+          <button type="button" class="pl-seg__item" role="radio"
+                  aria-checked="true" data-level="simple"
+                  aria-label="Simple, about grade 5">
+            <span class="pl-seg__name" data-i18n="levelSimple">Simple</span>
+            <span class="pl-seg__grade" data-i18n="levelSimpleGrade">~Grade 5</span>
+          </button>
+          <button type="button" class="pl-seg__item pl-seg__item--locked" role="radio"
+                  aria-checked="false" aria-disabled="true"
+                  data-level="plain" data-pro="true"
+                  aria-label="Plain, about grade 8, Pro">
+            <span class="pl-seg__name"><span data-i18n="levelPlain">Plain</span>
+              <svg class="pl-lock" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                   stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"
+                   aria-hidden="true" focusable="false">
+                <rect x="5" y="11" width="14" height="10" rx="2" /><path d="M8 11V7a4 4 0 0 1 8 0v4" />
+              </svg>
+            </span>
+            <span class="pl-seg__grade" data-i18n="levelPlainGrade">~Grade 8</span>
+          </button>
+        </div>
+      </section>
+
+      <!-- Actions -->
+      <div class="pl-sp-actions" role="group" aria-label="Simplify actions">
+        <button type="button" id="pl-sp-simplify" class="pl-btn pl-btn--primary pl-btn--block">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+               stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+            <path d="M4 7h16M4 12h10M4 17h6" /><path d="m15 15 2.5 2.5L22 13" />
+          </svg>
+          <span data-i18n="ctaSimplify">Simplify selection</span>
+        </button>
+        <div class="pl-sp-actions__row">
+          <button type="button" id="pl-sp-whole" class="pl-btn pl-btn--secondary pl-seg__item--locked pl-sp-whole"
+                  aria-disabled="true" data-pro="true"
+                  aria-label="Simplify whole article, Pro">
+            <svg class="pl-lock" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                 stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"
+                 aria-hidden="true" focusable="false">
+              <rect x="5" y="11" width="14" height="10" rx="2" /><path d="M8 11V7a4 4 0 0 1 8 0v4" />
+            </svg>
+            <span data-i18n="ctaWholeArticle">Simplify whole article</span>
+          </button>
+          <button type="button" id="pl-sp-copy" class="pl-btn pl-btn--ghost" hidden>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                 stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+              <rect x="9" y="9" width="11" height="11" rx="2" /><path d="M5 15V5a2 2 0 0 1 2-2h10" />
+            </svg>
+            <span data-i18n="ctaCopy">Copy result</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Download card (availability === downloadable | downloading) -->
+      <div class="pl-download" id="pl-sp-download" hidden>
+        <div class="pl-download__title" data-i18n="downloadTitle">Get the on-device model</div>
+        <p class="pl-download__hint" data-i18n="downloadHint">
+          One-time 2 to 4 GB download. It runs fully on your computer, and nothing
+          you read is ever sent anywhere.
+        </p>
+        <div class="pl-progress" aria-hidden="true">
+          <div class="pl-progress__fill" id="pl-sp-download-fill" style="width:0%"></div>
+        </div>
+        <div class="pl-download__actions">
+          <button type="button" id="pl-sp-download-start" class="pl-btn pl-btn--primary pl-btn--sm"
+                  data-i18n="ctaStartDownload">Download the model</button>
+          <span class="pl-download__pct" id="pl-sp-download-pct" role="status" aria-live="polite">0%</span>
+        </div>
+      </div>
+
+      <!-- Progress (long input: "Section N of M") -->
+      <div class="pl-sp-progress" id="pl-sp-progress" hidden>
+        <div class="pl-sp-progress__head">
+          <span class="pl-eyebrow" style="margin:0" data-i18n="progressLabel">Simplifying</span>
+          <span class="pl-download__pct" id="pl-sp-progress-count" role="status" aria-live="polite">0 of 0</span>
+        </div>
+        <div class="pl-progress" aria-hidden="true">
+          <div class="pl-progress__fill" id="pl-sp-progress-fill" style="width:0%"></div>
+        </div>
+      </div>
+
+      <!-- Notice (disclosure / recoverable error — one non-modal line) -->
+      <div class="pl-notice" id="pl-sp-notice" hidden role="status" aria-live="polite">
+        <span class="pl-notice__icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+               stroke-linecap="round" stroke-linejoin="round" focusable="false">
+            <path d="M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z" />
+            <line x1="12" y1="9" x2="12" y2="13" /><line x1="12" y1="17" x2="12.01" y2="17" />
+          </svg>
+        </span>
+        <span id="pl-sp-notice-text" data-i18n="noticeTruncated">
+          Simplified the first 20 sections. Select a smaller passage for the rest.
+        </span>
+      </div>
+
+      <!-- Result — the plain-English output (read-optimized) -->
+      <article class="pl-result" id="pl-sp-result" aria-live="polite" aria-labelledby="pl-sp-result-title">
+        <div class="pl-result__head">
+          <span class="pl-result__title" id="pl-sp-result-title" data-i18n="resultTitle">Plain English</span>
+          <span class="pl-result__level" id="pl-sp-result-level"></span>
+        </div>
+        <div class="pl-result__body" id="pl-sp-result-body">
+          <div class="pl-result__empty">
+            <strong data-i18n="resultEmptyTitle">Get your first plain-English result</strong>
+            <span data-i18n="resultEmptyBody">
+              Highlight a dense sentence and press Simplify. You get it back in
+              plain English in a second or two, right here.
+            </span>
+          </div>
+        </div>
+        <!-- Reading-stats readout — makes the level shift VISIBLE (the wedge) -->
+        <div class="pl-readout" id="pl-sp-readout" hidden>
+          <span class="pl-readout__stat"><b id="pl-sp-readout-words">0</b>&nbsp;<span data-i18n="readoutWords">words</span></span>
+          <span class="pl-readout__stat"><b id="pl-sp-readout-avg">0</b>&nbsp;<span data-i18n="readoutAvg">avg words / sentence</span></span>
+        </div>
+      </article>
+
+      <!-- Cap-hit paywall (Free hit 5/day) — inline banner, TS reveals once -->
+      <div class="pl-paywall pl-sp-cap" id="pl-sp-cap" hidden role="status" aria-live="polite">
+        <span class="pl-paywall__icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+               stroke-linecap="round" stroke-linejoin="round" focusable="false">
+            <rect x="5" y="11" width="14" height="10" rx="2" /><path d="M8 11V7a4 4 0 0 1 8 0v4" />
+          </svg>
+        </span>
+        <div class="pl-paywall__body">
+          <div class="pl-paywall__title" data-i18n="capTitle">You hit the free 5. Keep simplifying</div>
+          <div class="pl-paywall__text" data-i18n="capText">Pro removes the daily cap and simplifies whole articles at once. Free resets at midnight. Every plan has a 14-day money-back guarantee.</div>
+        </div>
+        <a class="pl-btn pl-btn--pro pl-btn--sm" id="pl-sp-cap-cta"
+           href="https://zovo.one/pricing?utm_source=plainly&utm_medium=extension&utm_campaign=upgrade&utm_content=cap-hit"
+           target="_blank" rel="noopener noreferrer" data-i18n="ctaUpgrade">Get Pro — $99 lifetime</a>
+        <button type="button" class="pl-paywall__close" id="pl-sp-cap-close"
+                aria-label="Maybe later">&times;</button>
+      </div>
+
+      <!-- Post-success peek — quiet nudge toward a locked level -->
+      <div class="pl-peek pl-sp-peek" id="pl-sp-peek" hidden>
+        <span data-i18n="peekText">Want it even simpler?</span>
+        <a id="pl-sp-peek-cta"
+           href="https://zovo.one/pricing?utm_source=plainly&utm_medium=extension&utm_campaign=upgrade&utm_content=post-success"
+           target="_blank" rel="noopener noreferrer">
+          <span data-i18n="peekCta">Unlock ELI5 · $99 once</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"
+               stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"
+               style="width:12px;height:12px">
+            <path d="M5 12h14M13 6l6 6-6 6" />
+          </svg>
+        </a>
+      </div>
+
+      <!--
+        Locked-feature peek + polite ask (First-Value Doctrine §4 show-don't-hide
+        and §5 ask-at-peak-intent): tapping a gold-locked level or Whole article
+        opens THIS inline card, never yanks the user straight to a new tab.
+        sidepanel.ts swaps the CTA href per surface (level-locked /
+        whole-article-locked). "Maybe later" is always one click away.
+      -->
+      <section class="pl-upcard" id="pl-sp-upcard" hidden aria-labelledby="pl-sp-upcard-title">
+        <button type="button" class="pl-paywall__close pl-upcard__close" id="pl-sp-upcard-close"
+                aria-label="Maybe later">&times;</button>
+        <div class="pl-upcard__title" id="pl-sp-upcard-title" data-i18n="upcardTitle">
+          Unlock the full reading-level range
+        </div>
+        <ul class="pl-upcard__stack">
+          <li data-i18n="upcardPerk1">Every level, ELI5 and Plain included</li>
+          <li data-i18n="upcardPerk2">No daily cap, plus whole articles at once</li>
+          <li data-i18n="upcardPerk3">Your last 10 results kept, not 3</li>
+        </ul>
+        <div class="pl-upcard__dual" data-i18n="planAnchor">$99 once, lifetime — or $4.99/month, cancel anytime. You break even in about 20 months; free features stay free.</div>
+        <div class="pl-upcard__dual" data-i18n="planGuarantee">14-day money-back guarantee · cancel anytime · zero data collection</div>
+        <a class="pl-btn pl-btn--pro pl-btn--block" id="pl-sp-upcard-cta"
+           href="https://zovo.one/pricing?utm_source=plainly&utm_medium=extension&utm_campaign=upgrade&utm_content=level-locked"
+           target="_blank" rel="noopener noreferrer" data-i18n="ctaUnlockPro">Get Pro — $99 lifetime</a>
+        <button type="button" class="pl-upcard__later" id="pl-sp-upcard-later" data-i18n="ctaMaybeLater">Maybe later</button>
+      </section>
+
+      <!-- History (last 3 Free / 10 Pro) -->
+      <section class="pl-sp-history" aria-labelledby="pl-sp-history-title">
+        <div class="pl-history__head">
+          <h3 class="pl-history__title" id="pl-sp-history-title" data-i18n="historyTitle">Recent</h3>
+          <span class="pl-history__count" id="pl-sp-history-count" role="status" aria-live="polite">0 / 3</span>
+          <button type="button" id="pl-sp-history-wipe" class="pl-history__wipe"
+                  data-i18n="ctaClear" aria-label="Clear history">Clear</button>
+        </div>
+        <ul class="pl-history__list" id="pl-sp-history-list">
+          <li class="pl-history__empty" id="pl-sp-history-empty" data-i18n="historyEmpty">
+            Nothing here yet. Simplify a dense sentence and it lands here.
+          </li>
+        </ul>
+        <!--
+          History-cap gate (value ladder gate 5): shown only when Free history is
+          full, so the ask fires at the exact moment the user feels the bound.
+        -->
+        <a class="pl-history__pronudge" id="pl-sp-history-pronudge" hidden
+           href="https://zovo.one/pricing?utm_source=plainly&utm_medium=extension&utm_campaign=upgrade&utm_content=history-cap"
+           target="_blank" rel="noopener noreferrer" data-i18n="historyProNudge">Pro keeps your last 10 results, not 3</a>
+      </section>
+    </main>
+
+    <!-- ============================ Footer =========================== -->
+    <footer class="pl-footer pl-sp__footer">
+      <div class="pl-shield">
+        <span class="pl-shield__icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+               stroke-linecap="round" stroke-linejoin="round" focusable="false">
+            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" /><path d="m9 12 2 2 4-4" />
+          </svg>
+        </span>
+        <span data-i18n="shieldText">Nothing you read ever leaves your device.</span>
+      </div>
+      <div class="pl-footer__row">
+        <a href="https://zovo.one" target="_blank" rel="noopener noreferrer">
+          Built by <b>zovo.one</b> &rarr;
+        </a>
+        <a id="pl-sp-options-link" href="../options.html" target="_blank" rel="noopener noreferrer"
+           data-i18n="ctaSettings">Settings</a>
+      </div>
+      <p class="pl-footer__disclaimer" data-i18n="footerDisclaimer">
+        Not affiliated with Google or Chrome. Chrome is a trademark of Google LLC.
+      </p>
+    </footer>
+
+    <script src="sidepanel.js"></script>
+  </body>
+</html>

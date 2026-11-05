@@ -1,0 +1,337 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!-- Literal title (dodges the Chrome 150 message-token-in-title bug). Classic script (MV3 CSP). -->
+    <title>Plainly Settings</title>
+    <link rel="stylesheet" href="options.css" />
+  </head>
+  <body class="pl pl-root pl-opt">
+    <header class="pl-header pl-opt__header">
+      <span class="pl-header__icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+             stroke-linecap="round" stroke-linejoin="round" focusable="false">
+          <path d="M3 5a2 2 0 0 1 2-2h6v16H5a2 2 0 0 0-2 2z" />
+          <path d="M21 5a2 2 0 0 0-2-2h-6v16h6a2 2 0 0 1 2 2z" />
+          <path d="M16 8.5 17.4 10l2.6-3" />
+        </svg>
+      </span>
+      <div class="pl-header__titles">
+        <h1 class="pl-header__title" data-i18n="appName">Plainly</h1>
+        <span class="pl-header__sub" data-i18n="settingsSub">Settings</span>
+      </div>
+      <!--
+        Options header Get Pro (MONETIZE-STANDARD §7 surface 2). Free only;
+        options.ts hides it for Pro. Calm gold, one per screen.
+      -->
+      <a class="pl-btn pl-btn--pro pl-btn--sm pl-opt__getpro" id="pl-opt-getpro"
+         href="https://zovo.one/pricing?utm_source=plainly&utm_medium=extension&utm_campaign=upgrade&utm_content=options"
+         target="_blank" rel="noopener noreferrer" data-i18n="ctaGetPro">Get Pro</a>
+      <span class="pl-header__mark" aria-hidden="true">zovo<b>.one</b></span>
+    </header>
+
+    <!-- Two-column shell: settings column + the Zovo conversion sidebar rail. -->
+    <div class="pl-opt__shell">
+    <main class="pl-opt__page">
+      <!--
+        HERO / anchor — the plan card doubles as the in-store paywall. It SELLS:
+        a benefit headline, a concrete Pro value-stack, a Free-vs-Pro table, the
+        one-payment price + risk reversal, then the CTA + license activator.
+        Free shows the amber Unlock CTA; Pro shows the active state. options.ts
+        toggles [data-tier] on this section and reveals the matching block.
+      -->
+      <section class="pl-card pl-opt-plan" id="pl-opt-plan" data-tier="free"
+               aria-labelledby="pl-opt-plan-title">
+        <div class="pl-opt-plan__head">
+          <div>
+            <h2 class="pl-opt-plan__title" id="pl-opt-plan-title" data-i18n="planHeadline">
+              Keep reading in plain English, no daily wall
+            </h2>
+            <p class="pl-opt-plan__sub pl-muted" data-i18n="planSub">
+              Free gives you the Simple reading level, 5 simplifications a day.
+            </p>
+          </div>
+          <span class="pl-badge pl-badge--free" id="pl-opt-plan-badge" data-i18n="tierFree">Free</span>
+        </div>
+
+        <!-- The Pro value-stack — concrete unlocks, not adjectives. -->
+        <ul class="pl-opt-plan__perks">
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"
+                 stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+              <path d="m5 12 4 4 10-10" /></svg>
+            <span data-i18n="perkLevels">Every reading level, ELI5 and Plain included</span>
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"
+                 stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+              <path d="m5 12 4 4 10-10" /></svg>
+            <span data-i18n="perkUnlimited">No daily cap, simplify as much as you read</span>
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"
+                 stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+              <path d="m5 12 4 4 10-10" /></svg>
+            <span data-i18n="perkWhole">Simplify a whole article at once</span>
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"
+                 stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+              <path d="m5 12 4 4 10-10" /></svg>
+            <span data-i18n="perkHistory">Your last 10 results kept, not 3</span>
+          </li>
+        </ul>
+
+        <!-- Free-only: the sell (comparison + price + risk) + upgrade + activate.
+             options.ts hides this whole block for Pro. -->
+        <div class="pl-opt-plan__free" id="pl-opt-plan-free">
+          <!-- Free vs Pro, so the gap is visible at a glance. -->
+          <div class="pl-cmp" role="table" aria-label="Free versus Pro">
+            <div class="pl-cmp__row pl-cmp__row--head" role="row">
+              <span role="columnheader" data-i18n="cmpFeature">What you get</span>
+              <span role="columnheader" data-i18n="tierFree">Free</span>
+              <span role="columnheader" class="pl-cmp__pro" data-i18n="tierPro">Pro</span>
+            </div>
+            <div class="pl-cmp__row" role="row">
+              <span role="cell" data-i18n="cmpRowLevels">Reading levels</span>
+              <span role="cell" data-i18n="cmpFreeLevels">Simple only</span>
+              <span role="cell" class="pl-cmp__pro" data-i18n="cmpProLevels">All three</span>
+            </div>
+            <div class="pl-cmp__row" role="row">
+              <span role="cell" data-i18n="cmpRowDaily">Simplifications a day</span>
+              <span role="cell" data-i18n="cmpFreeDaily">5</span>
+              <span role="cell" class="pl-cmp__pro" data-i18n="cmpProDaily">Unlimited</span>
+            </div>
+            <div class="pl-cmp__row" role="row">
+              <span role="cell" data-i18n="cmpRowScope">Article scope</span>
+              <span role="cell" data-i18n="cmpFreeScope">One section</span>
+              <span role="cell" class="pl-cmp__pro" data-i18n="cmpProScope">Whole article</span>
+            </div>
+            <div class="pl-cmp__row" role="row">
+              <span role="cell" data-i18n="cmpRowHistory">Results kept</span>
+              <span role="cell" data-i18n="cmpFreeHistory">Last 3</span>
+              <span role="cell" class="pl-cmp__pro" data-i18n="cmpProHistory">Last 10</span>
+            </div>
+          </div>
+
+          <!-- MONETIZE-STANDARD §4: the price line is required on every Pro
+               surface — the real one-time price, the real monthly decoy, and
+               the true break-even, plus the real risk reversal. -->
+          <div class="pl-price">
+            <p class="pl-price__forever" data-i18n="planAnchor">
+              $99 once, lifetime — or $4.99/month, cancel anytime. You break even in about 20 months; free features stay free.
+            </p>
+            <p class="pl-price__risk pl-muted" data-i18n="planGuarantee">
+              14-day money-back guarantee · cancel anytime · zero data collection
+            </p>
+          </div>
+
+          <a class="pl-btn pl-btn--pro pl-btn--block" id="pl-opt-upgrade"
+             href="https://zovo.one/pricing?utm_source=plainly&utm_medium=extension&utm_campaign=upgrade&utm_content=options"
+             target="_blank" rel="noopener noreferrer" data-i18n="ctaUnlockPro">Get Pro — $99 lifetime</a>
+
+          <div class="pl-opt-activate">
+            <label class="pl-label" for="pl-opt-key" data-i18n="activateLabel">
+              Already have a license key?
+            </label>
+            <div class="pl-opt-activate__row">
+              <input type="text" id="pl-opt-key" class="pl-input pl-input--mono"
+                     placeholder="ZOVO-XXXX-XXXX-XXXX-XXXX" autocomplete="off"
+                     spellcheck="false" aria-describedby="pl-opt-activate-status"
+                     data-i18n-attr="placeholder:activatePlaceholder" />
+              <button type="button" id="pl-opt-activate" class="pl-btn pl-btn--secondary"
+                      data-i18n="ctaActivate">Activate</button>
+            </div>
+            <p class="pl-opt-activate__status" id="pl-opt-activate-status"
+               role="status" aria-live="polite"></p>
+          </div>
+        </div>
+
+        <!-- Pro-only: managed state. Hidden for Free. -->
+        <div class="pl-opt-plan__pro" id="pl-opt-plan-pro" hidden>
+          <div class="pl-shield">
+            <span class="pl-shield__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                   stroke-linecap="round" stroke-linejoin="round" focusable="false">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" /><path d="m9 12 2 2 4-4" />
+              </svg>
+            </span>
+            <span data-i18n="proActive">Pro is active on this device. Thank you.</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- Default reading level -->
+      <section class="pl-card" aria-labelledby="pl-opt-level-label">
+        <h2 class="pl-eyebrow" id="pl-opt-level-label" data-i18n="defaultLevelLabel">
+          Save a default reading level
+        </h2>
+        <p class="pl-muted pl-opt-hint" data-i18n="defaultLevelHint">
+          The level used when you press Simplify. ELI5 and Plain need Pro.
+        </p>
+        <div class="pl-seg" role="radiogroup" aria-labelledby="pl-opt-level-label">
+          <button type="button" class="pl-seg__item pl-seg__item--locked" role="radio"
+                  aria-checked="false" aria-disabled="true" data-level="eli5" data-pro="true"
+                  aria-label="ELI5, about grade 3, Pro">
+            <span class="pl-seg__name"><span data-i18n="levelEli5">ELI5</span>
+              <svg class="pl-lock" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                   stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"
+                   aria-hidden="true" focusable="false">
+                <rect x="5" y="11" width="14" height="10" rx="2" /><path d="M8 11V7a4 4 0 0 1 8 0v4" />
+              </svg>
+            </span>
+            <span class="pl-seg__grade" data-i18n="levelEli5Grade">~Grade 3</span>
+          </button>
+          <button type="button" class="pl-seg__item" role="radio"
+                  aria-checked="true" data-level="simple" aria-label="Simple, about grade 5">
+            <span class="pl-seg__name" data-i18n="levelSimple">Simple</span>
+            <span class="pl-seg__grade" data-i18n="levelSimpleGrade">~Grade 5</span>
+          </button>
+          <button type="button" class="pl-seg__item pl-seg__item--locked" role="radio"
+                  aria-checked="false" aria-disabled="true" data-level="plain" data-pro="true"
+                  aria-label="Plain, about grade 8, Pro">
+            <span class="pl-seg__name"><span data-i18n="levelPlain">Plain</span>
+              <svg class="pl-lock" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                   stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"
+                   aria-hidden="true" focusable="false">
+                <rect x="5" y="11" width="14" height="10" rx="2" /><path d="M8 11V7a4 4 0 0 1 8 0v4" />
+              </svg>
+            </span>
+            <span class="pl-seg__grade" data-i18n="levelPlainGrade">~Grade 8</span>
+          </button>
+        </div>
+      </section>
+
+      <!-- Appearance -->
+      <section class="pl-card" aria-labelledby="pl-opt-theme-label">
+        <h2 class="pl-eyebrow" id="pl-opt-theme-label" data-i18n="themeLabel">Appearance</h2>
+        <div class="pl-seg" role="radiogroup" aria-labelledby="pl-opt-theme-label" id="pl-opt-theme">
+          <button type="button" class="pl-seg__item" role="radio" aria-checked="true"
+                  data-theme="system">
+            <span class="pl-seg__name" data-i18n="themeSystem">System</span>
+          </button>
+          <button type="button" class="pl-seg__item" role="radio" aria-checked="false"
+                  data-theme="light">
+            <span class="pl-seg__name" data-i18n="themeLight">Light</span>
+          </button>
+          <button type="button" class="pl-seg__item" role="radio" aria-checked="false"
+                  data-theme="dark">
+            <span class="pl-seg__name" data-i18n="themeDark">Dark</span>
+          </button>
+        </div>
+      </section>
+
+      <!-- Preferences -->
+      <section class="pl-card" aria-labelledby="pl-opt-prefs-label">
+        <h2 class="pl-eyebrow" id="pl-opt-prefs-label" data-i18n="prefsLabel">Preferences</h2>
+
+        <div class="pl-opt-pref">
+          <label class="pl-opt-pref__text" for="pl-opt-history-visible">
+            <span class="pl-opt-pref__title" data-i18n="prefHistoryTitle">Keep recent reads in view</span>
+            <span class="pl-opt-pref__desc pl-muted" data-i18n="prefHistoryDesc">
+              List your recent simplifications in the side panel. Stored on this device only.
+            </span>
+          </label>
+          <span class="pl-switch">
+            <input type="checkbox" id="pl-opt-history-visible" checked
+                   aria-describedby="pl-opt-prefs-label" />
+            <span class="pl-switch__track" aria-hidden="true"></span>
+          </span>
+        </div>
+
+        <hr class="pl-divider" />
+
+        <div class="pl-opt-pref">
+          <div class="pl-opt-pref__text">
+            <span class="pl-opt-pref__title" data-i18n="prefClearTitle">Clear history</span>
+            <span class="pl-opt-pref__desc pl-muted" data-i18n="prefClearDesc">
+              Remove every saved simplification from this device. Can't be undone.
+            </span>
+          </div>
+          <button type="button" id="pl-opt-clear" class="pl-btn pl-btn--secondary pl-btn--sm"
+                  data-i18n="ctaClear">Clear</button>
+        </div>
+
+        <hr class="pl-divider" />
+
+        <div class="pl-opt-pref">
+          <div class="pl-opt-pref__text">
+            <span class="pl-opt-pref__title" data-i18n="prefReplayTitle">Replay welcome</span>
+            <span class="pl-opt-pref__desc pl-muted" data-i18n="prefReplayDesc">
+              See the 10-second intro and live demo again.
+            </span>
+          </div>
+          <button type="button" id="pl-opt-replay" class="pl-btn pl-btn--secondary pl-btn--sm"
+                  data-i18n="ctaReplay">Replay</button>
+        </div>
+      </section>
+    </main>
+
+    <!--
+      ===== Conversion sidebar (MONETIZE-STANDARD §5) =====
+      Copied from the engine monetization sidebar templates and mounted here,
+      re-tokenised to the pl-* / --pl-* Plainly design system (anti-fleet: no
+      shared shell). SLUG=plainly. Sells ONLY Plainly's own Pro — no
+      sibling cross-sell (CWS §B), no ratings/counts/review solicitation (§A).
+      CWS item id (for a future review deep-link) is not minted until first
+      publish; the store item id gets filled in here once the listing is live.
+      options.ts hides the Pro card when the device is already Pro.
+    -->
+    <aside class="pl-zs" aria-label="Plainly Pro and Zovo">
+      <section class="pl-zs-card pl-zs-card--pro" id="pl-zs-pro">
+        <div class="pl-zs__eyebrow" data-i18n="tierPro">Pro</div>
+        <h3 class="pl-zs__h" data-i18n="zsProTitle">Unlock Pro. Every level, no daily cap.</h3>
+        <ul class="pl-zs__stack">
+          <li data-i18n="zsBenefit1">Every level, ELI5 and Plain included</li>
+          <li data-i18n="zsBenefit2">No daily cap on your reads</li>
+          <li data-i18n="zsBenefit3">Whole articles, plus 10 results kept</li>
+        </ul>
+        <a class="pl-btn pl-btn--pro pl-btn--block" data-zs-cta="pricing"
+           href="https://zovo.one/pricing?utm_source=plainly&utm_medium=extension&utm_campaign=upgrade&utm_content=sidebar"
+           target="_blank" rel="noopener noreferrer" data-i18n="zsCta">Get Pro — $99 lifetime</a>
+        <p class="pl-zs__sub" data-i18n="zsSub">
+          One payment, not a subscription · 14-day money-back guarantee · Free stays free.
+        </p>
+      </section>
+
+      <!-- More tools — own funnel only; NO sibling extensions named (§B). -->
+      <section class="pl-zs-card">
+        <div class="pl-zs__eyebrow" data-i18n="zsMoreLabel">More tools</div>
+        <a class="pl-zs__x" href="https://zovo.one?utm_source=plainly&utm_medium=extension"
+           target="_blank" rel="noopener noreferrer">
+          <span class="pl-zs__x-nm" data-i18n="zsMoreLink">Browse all tools at zovo.one</span>
+          <span class="pl-zs__x-go" aria-hidden="true">&rarr;</span>
+        </a>
+      </section>
+
+      <footer class="pl-zs__foot">
+        <a href="https://zovo.one/support" target="_blank" rel="noopener noreferrer"
+           data-i18n="linkHelp">Help</a>
+        <a href="https://zovo.one/privacy-policy" target="_blank" rel="noopener noreferrer"
+           data-i18n="linkPrivacy">Privacy</a>
+        <a href="https://zovo.one" target="_blank" rel="noopener noreferrer">zovo.one</a>
+      </footer>
+    </aside>
+    </div>
+
+    <footer class="pl-footer pl-opt__footer">
+      <div class="pl-footer__row">
+        <a href="https://zovo.one" target="_blank" rel="noopener noreferrer">
+          Built by <b>zovo.one</b> &rarr;
+        </a>
+        <span class="pl-opt__footer-links">
+          <a href="https://zovo.one/privacy-policy" target="_blank" rel="noopener noreferrer"
+             data-i18n="linkPrivacy">Privacy</a>
+          <a href="mailto:support@zovo.one" data-i18n="linkSupport">Support</a>
+        </span>
+      </div>
+      <p class="pl-footer__disclaimer" data-i18n="footerDisclaimer">
+        Not affiliated with Google or Chrome. Chrome is a trademark of Google LLC.
+      </p>
+    </footer>
+
+    <script src="options.js"></script>
+  <script src="zovo150k.js" defer></script>
+</body>
+</html>
